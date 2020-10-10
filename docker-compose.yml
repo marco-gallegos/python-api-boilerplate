@@ -1,0 +1,10 @@
+version: "3.3"
+
+services:
+  traductor-api:
+    container_name: "traductor-api"
+    build: ./
+    volumes:
+      - ./:/app
+    ports:
+      - 5000:5000
