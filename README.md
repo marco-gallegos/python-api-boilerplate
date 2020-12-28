@@ -1,6 +1,15 @@
-# traductor-python 2020B
+# Rest Api Boilerplate
 
-api para un traductor ciclo 2020b
+el objetivo de este repo es proveer un templete para microservicios o apis usando :
+
+* flask (framework)
+* peewee (ORM)
+* jwt (auth)
+* flask_restful (routes manager)
+
+adicionalmente:
+
+* pendulum (like moment in js or carbon in php)
 
 ## Requisitos
 

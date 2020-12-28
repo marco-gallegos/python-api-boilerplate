@@ -1,6 +1,6 @@
 FROM python:3.8
 
-LABEL MAINTAINER="TTL2020B"
+LABEL MAINTAINER="Marco A. Gallegos"
 WORKDIR /app
 COPY requirements.txt .
 RUN pip install -r requirements.txt

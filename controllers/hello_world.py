@@ -8,4 +8,4 @@ from flask_restful import Resource
 
 class HelloWorld(Resource):
     def get(self):
-        return {'hello': 'yo habia ponido mi traductor aqui'}
+        return {'hello': 'world'}

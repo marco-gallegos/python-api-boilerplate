@@ -1,5 +1,6 @@
-# @Author Marco A. Gallegos
-# @Date 2020/10/09
+# @Author   Marco A. Gallegos
+# @Date     2020/10/09
+# @Update   2020/12/26
 # @Description
 #   Este archivo define las librerias que son requeridas para el proyecto es la fuente para pip-tools para poder gestionar
 #   las actualizaciones de las librearias y/o la sincronizacion con el entorno, este archivo genera pues a requirements.txt
@@ -11,3 +12,4 @@ peewee
 pendulum
 numpy
 python-dotenv
+loguru
