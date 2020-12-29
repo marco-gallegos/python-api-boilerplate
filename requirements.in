@@ -13,3 +13,4 @@ pendulum
 numpy
 python-dotenv
 loguru
+flask-jwt-extended

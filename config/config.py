@@ -35,6 +35,7 @@ if tipo_db=='sqlite' and not os.getenv('DB_DATABASE'):
 
 APP_CONFIG = {
     "APP_NAME": app_name,
+    "APP_KEY": app_key,
     "DB_CONNECTION": tipo_db,
     "DB_DATABASE": nombre_db,
     "DB_USERNAME": user_db,

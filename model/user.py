@@ -9,6 +9,8 @@
 from config.ORM import db
 from peewee import Model
 from peewee import CharField, DateTimeField, AutoField
+from passlib.hash import pbkdf2_sha256 as sha256
+import datetime
 
 
 class User(Model):
@@ -17,7 +19,7 @@ class User(Model):
     lastname = CharField()
     email = CharField(unique=True, index=True)
     password = CharField()
-    created_at = DateTimeField()
+    created_at = DateTimeField(default=datetime.datetime.now)
     updated_at = DateTimeField(null=True)
     deleted_at = DateTimeField(null=True)
 
@@ -27,5 +29,17 @@ class User(Model):
 
     def get_as_dict(self)->dict:
         return {
-            "id":self.id
+            "id":self.id,
+            "name":self.name,
+            "lastname":self.lastname,
+            "email":self.email,
+            "password":self.password,
         }
+    
+    @staticmethod
+    def generate_hash(password):
+        return sha256.hash(password)
+    
+    @staticmethod
+    def verify_hash(password, hash):
+        return sha256.verify(password, hash)
