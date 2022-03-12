@@ -8,6 +8,7 @@
 
 flask
 flask-restful
+passlib
 peewee
 pendulum
 numpy

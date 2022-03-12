@@ -8,10 +8,10 @@
 from config.config import APP_CONFIG
 from flask import Flask
 from flask_restful import Api
-from flask_jwt_extended import (
-    JWTManager, jwt_required, create_access_token,
-    get_jwt_claims
-)
+#from flask_jwt_extended import (
+#    JWTManager, jwt_required, create_access_token,
+#    get_jwt_claims
+#)
 import os
 
 #controladores
@@ -25,14 +25,14 @@ app = Flask(__name__)
 # Setup the Flask-JWT-Extended extension
 #TODO use .env secret
 app.config['JWT_SECRET_KEY'] = APP_CONFIG['APP_KEY']
-jwt = JWTManager(app)
+#jwt = JWTManager(app)
 
-@jwt.user_claims_loader
-def add_claims_to_access_token(identity):
-    print("hola desde claim automatico de jwt")
-    return {
-        'hello': identity,
-    }
+#@jwt.user_claims_loader
+#def add_claims_to_access_token(identity):
+#    print("hola desde claim automatico de jwt")
+#    return {
+#        'hello': identity,
+#    }
 
 # Setup the flask restful api
 api = Api(app)
@@ -41,7 +41,7 @@ api = Api(app)
 # rutas resource de flask restful
 api.add_resource(controllers.HelloWorld, '/')
 api.add_resource(controllers.UserController, '/user')
-api.add_resource(controllers.LoginController, '/login')
+#api.add_resource(controllers.LoginController, '/login')
 
 #se pueden agregar rutas nativas de flask que regresen json
 
