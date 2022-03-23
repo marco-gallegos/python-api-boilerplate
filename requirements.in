@@ -7,11 +7,12 @@
 #   pip-compile
 
 flask
+flask-cors
 flask-restful
+flask-jwt-extended
+loguru
+numpy
 passlib
 peewee
 pendulum
-numpy
 python-dotenv
-loguru
-flask-jwt-extended
