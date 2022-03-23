@@ -7,6 +7,7 @@
 """
 from config.config import APP_CONFIG
 from flask import Flask
+from flask_cors import CORS
 from flask_restful import Api
 #from flask_jwt_extended import (
 #    JWTManager, jwt_required, create_access_token,
@@ -14,13 +15,14 @@ from flask_restful import Api
 #)
 import os
 
-#controladores
+# controladores
 import controllers
 
 
 
 #TODO use app_name from .env
 app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 # Setup the Flask-JWT-Extended extension
 #TODO use .env secret
@@ -34,16 +36,17 @@ app.config['JWT_SECRET_KEY'] = APP_CONFIG['APP_KEY']
 #        'hello': identity,
 #    }
 
+#se pueden agregar rutas nativas de flask que regresen json
+
+
 # Setup the flask restful api
 api = Api(app)
-
 
 # rutas resource de flask restful
 api.add_resource(controllers.HelloWorld, '/')
 api.add_resource(controllers.UserController, '/user')
 #api.add_resource(controllers.LoginController, '/login')
 
-#se pueden agregar rutas nativas de flask que regresen json
 
 
 if __name__ == '__main__':
