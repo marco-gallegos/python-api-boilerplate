@@ -8,19 +8,20 @@ before_script:
   # set up this variable in your account
   #- echo "$SSH_PRIVATE_KEY"
   #- echo "$SSH_PRIVATE_KEY" | ssh-add -
-  - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+  - echo "$SSH_PRIVATE_KEY" | ssh-add -
   - mkdir -p ~/.ssh
   - chmod 700 ~/.ssh
   - ssh-keyscan gitlab.com >> ~/.ssh/known_hosts
   - ssh-keyscan ssh-gallem.alwaysdata.net >> ~/.ssh/known_hosts
   - chmod 644 ~/.ssh/known_hosts
-  - git config --global user.email "deployer@gallem.com"
-  - git config --global user.name "Deployer"
+  #- git config --global user.email "deployer@gallem.com"
+  #- git config --global user.name "Deployer"
 
 
 Deploy:
   script:
     - git clone https://gitlab.com/gallem/python-api-boilerplate.git pythonapi
-    - rsync -rlvPz -F pythonapi/ gallem@ssh-gallem.alwaysdata.net:/home/gallem/www/
+    - scp -rvf pythonapi gallem@ssh-gallem.alwaysdata.net:/home/gallem/www
+    # - rsync -rlvPz -F pythonapi/ gallem@ssh-gallem.alwaysdata.net:/home/gallem/www/
     # - ssh deployer@web4.woralelandia.com sudo systemctl restart nginx.service
 
