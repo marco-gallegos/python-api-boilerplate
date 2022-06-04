@@ -1,0 +1,25 @@
+# frst ci 
+
+image: alpine
+
+before_script:
+  - 'which ssh-agent || ( apk update && apk upgrade && apk add openssh-client git rsync )'
+  - eval $(ssh-agent -s)
+  # set up this variable in your account
+  - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+  - mkdir -p ~/.ssh
+  - chmod 700 ~/.ssh
+  - ssh-keyscan gitlab.com >> ~/.ssh/known_hosts
+  # TODO: update this field
+  - ssh-keyscan web4.woralelandia.com >> ~/.ssh/known_hosts
+  - chmod 644 ~/.ssh/known_hosts
+  - git config --global user.email "deployer@gallem.com"
+  - git config --global user.name "Deployer"
+
+
+Deploy:
+  script:
+  - git clone git@gitlab.com:renich/mi-sitio.git
+  - rsync -rlvPz -F mi-sitio/ deployer@web4.woralelandia.com:/srv/www/html/mi-sitio.com/default/public/
+  - ssh deployer@web4.woralelandia.com sudo systemctl restart nginx.service
+
