@@ -9,14 +9,14 @@ import dotenv
 from pathlib import Path
 import os
 
-#explicitly providing path to '.env'
-#env_path = Path('.') / '../.env'
+# explicitly providing path to '.env'
+# env_path = Path('.') / '../.env'
 env_path = dotenv.find_dotenv(usecwd=True)
 
 dotenv.load_dotenv(dotenv_path=env_path,verbose=True)
-#load_dotenv(dotenv_path=env_path, verbose=False)
+# load_dotenv(dotenv_path=env_path, verbose=False)
 
-app_name = os.getenv('APP_NAME') if os.getenv('APP_NAME') else 'apipython' 
+app_name = os.getenv('APP_NAME') if os.getenv('APP_NAME') else 'apipythontemplate'
 app_env = os.getenv('APP_ENV') if os.getenv('APP_ENV') else 'development' 
 app_debug = os.getenv('APP_DEBUG') if os.getenv('APP_DEBUG') else True
 app_key = os.getenv('APP_KEY') if os.getenv('APP_KEY') else 'no hay joven' 
@@ -29,6 +29,7 @@ password_db = os.getenv('DB_PASSWORD') if os.getenv('DB_PASSWORD') else 'none'
 host_db = os.getenv('DB_HOST') if os.getenv('DB_HOST') else '127.0.0.1'
 port_db = os.getenv('DB_PORT') if os.getenv('DB_PORT') else 3306
 port_db=int(port_db)
+
 if tipo_db=='sqlite' and not os.getenv('DB_DATABASE'):
     nombre_db = f"{nombre_db}.db"
 

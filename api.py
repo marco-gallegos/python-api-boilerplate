@@ -12,16 +12,15 @@ from flask_restful import Api
 from flask_jwt_extended import (get_jwt_identity, jwt_required, JWTManager)
 import os
 
-# controladores
 import controllers
 
-# TODO use app_name from .env
-app = Flask(__name__)
+print(APP_CONFIG)
+
+app = Flask(APP_CONFIG['APP_NAME'])
 CORS(app, resources={r"/*": {"origins": "*"}})
 
 # Setup the Flask-JWT-Extended extension
-# TODO use .env secret
-app.config["JWT_SECRET_KEY"] = "super-secret-XD"  # Change this!
+app.config["JWT_SECRET_KEY"] = APP_CONFIG['APP_KEY']
 jwt = JWTManager(app)
 
 
