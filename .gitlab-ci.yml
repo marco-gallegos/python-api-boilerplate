@@ -1,4 +1,9 @@
-# frst ci 
+# frst ci
+# i want to run a deploy to my server using a vps considering my most common access (ssh)
+# how i configure:
+# generate a ssh key on the server (ej: ssh-keygen -> use defaults and no password)
+# ensure use the same domain -> ssh-copy-id -i $HOME/.ssh/id_rsa.pub [user]@ssh-[account].alwaysdata.net
+# copy private key and public key to gitlab variables
 
 image: alpine
 
