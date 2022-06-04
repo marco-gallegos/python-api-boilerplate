@@ -10,8 +10,7 @@ before_script:
   - mkdir -p ~/.ssh
   - chmod 700 ~/.ssh
   - ssh-keyscan gitlab.com >> ~/.ssh/known_hosts
-  # TODO: update this field
-  - ssh-keyscan web4.woralelandia.com >> ~/.ssh/known_hosts
+  - ssh-keyscan ssh-gallem.alwaysdata.net >> ~/.ssh/known_hosts
   - chmod 644 ~/.ssh/known_hosts
   - git config --global user.email "deployer@gallem.com"
   - git config --global user.name "Deployer"
@@ -19,7 +18,7 @@ before_script:
 
 Deploy:
   script:
-  - git clone git@gitlab.com:renich/mi-sitio.git
-  - rsync -rlvPz -F mi-sitio/ deployer@web4.woralelandia.com:/srv/www/html/mi-sitio.com/default/public/
-  - ssh deployer@web4.woralelandia.com sudo systemctl restart nginx.service
+    - git clone https://gitlab.com/gallem/python-api-boilerplate.git pythonapi
+    - rsync -rlvPz -F pythonapi/ gallem@ssh-gallem.alwaysdata.net:/home/gallem/www/
+    # - ssh deployer@web4.woralelandia.com sudo systemctl restart nginx.service
 
