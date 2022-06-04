@@ -21,7 +21,7 @@ before_script:
 Deploy:
   script:
     - git clone https://gitlab.com/gallem/python-api-boilerplate.git pythonapi
-    - scp -rvf pythonapi gallem@ssh-gallem.alwaysdata.net:/home/gallem/www
+    - scp -r pythonapi gallem@ssh-gallem.alwaysdata.net:/home/gallem/www
     # - rsync -rlvPz -F pythonapi/ gallem@ssh-gallem.alwaysdata.net:/home/gallem/www/
     # - ssh deployer@web4.woralelandia.com sudo systemctl restart nginx.service
 
